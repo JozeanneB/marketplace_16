@@ -20,5 +20,9 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => 'akakakakakaka',
             ]
         );
+        /*
+        // Cria 10 usuários com dados da biblioteca faker
+        factory(\App\User::class, 10)->create();
+        */
     }
 }
