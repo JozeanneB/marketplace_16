@@ -39,10 +39,28 @@ Route::get('/model', function () {
    
     return \App\User::all();
     */
-    
+
     /*
+    // Mass assignment - atribuição em massa
+    $user = \App\User::create([
+        'name' => 'Nanderson Castro',
+        'email' => 'email100@email.com',
+        'password'=> bcrypt('123456')
+    ]);
+    */
+
+    /*
+    //Mass update -atualização em massa
+    $user = \App\User::find(5);
+
+    $user = $user->update([
+        'name' => 'Atualizando com Mass Update'
+    ]);
+    */
+    
+    return \App\User::all();
+
     $products = \App\Product::all(); // select * from products
 
     return $products;
-    */
 });
