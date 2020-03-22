@@ -133,6 +133,13 @@ Route::get('/model', function () {
  
     //dd($product->categories()->sync([1, 2])); //Adiciona as categorias 1 e 2 ao produto
     */
+
+    /*
+    //Obter as categorias do produto
+    $product = \App\Product::find(4);
+
+    return $product->categories;
+    */
     
     return \App\User::all();
 
