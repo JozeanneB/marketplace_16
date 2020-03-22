@@ -79,6 +79,60 @@ Route::get('/model', function () {
     $categoria = \App\Category::find(1);
     $categoria.products;
     */
+
+    /*
+    //Criar uma loja para um usuário
+    $user = \App\User::find(10);
+    $store = $user->store()->create([
+        'name' => 'Loja Teste',
+        'description' => 'Loja Teste de produtos de informática',
+        'mobile_phone' => 'XX-XXXX-XXXX',
+        'phone' => 'XX-XXXXX-XXXX',
+        'slug' => 'loja-teste',
+    ]);
+
+    dd($store);
+    */
+
+    /*
+    //Criar um produto para uma loja
+    $store = \App\Store::find(1);
+    $product = $store->products()->create([
+        'name' => 'Notebook Dell',
+        'description' => 'CORE I5 10GB',
+        'body' => 'Qualquer coisa...',
+        'price' => 2999.99,
+        'slug' => 'notebook-dell',
+    ]);
+    
+    dd($product); 
+    */
+
+    /*
+    //Criar uma categoria
+    \App\Category::create([
+        'name' => 'Games',
+        'description' => null,
+        'slug' => 'games',
+    ]); 
+    
+    \App\Category::create([
+        'name' => 'Notebooks',
+        'description' => null,
+        'slug' => 'notebooks',
+    ]);  
+    
+    return \App\Category::all();
+    */
+
+    /*
+    //Adicionar um produto para uma categoria ou vice-versa
+    $product = \App\Product::find(4);
+    //dd($product->categories()->attach([1])); //Incluir a categoria
+    //dd($product->categories()->detach([1])); //Remover a categoria
+ 
+    //dd($product->categories()->sync([1, 2])); //Adiciona as categorias 1 e 2 ao produto
+    */
     
     return \App\User::all();
 
