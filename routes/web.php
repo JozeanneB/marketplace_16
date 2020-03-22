@@ -58,6 +58,28 @@ Route::get('/model', function () {
     ]);
     */
     
+    /*
+    //Como eu faria para pegar a loja de um usuário
+    $user = \App\User::find(14);
+    
+    //dd($user->store->count()); // Número de propriedades da store
+    return $user->store; //O objeto único (Store) se for Collection de Dados (Objeto)
+    */
+    
+    /*
+    //Pegar os produtos de uma loja
+    $loja = \App\Store::find(1);
+    //return $loja->products->count();
+    //return $loja->products()->where('id', 1)->get();
+    return $loja->products;
+    */
+ 
+    /*
+    //Pegar as lojas de uma categoria
+    $categoria = \App\Category::find(1);
+    $categoria.products;
+    */
+    
     return \App\User::all();
 
     $products = \App\Product::all(); // select * from products
