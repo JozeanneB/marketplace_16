@@ -11,6 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        /*
         \DB::table('users')->insert(
             [
                 'name' => 'Admin',
@@ -20,9 +21,16 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => 'akakakakakaka',
             ]
         );
+        */
+
         /*
         // Cria 10 usuários com dados da biblioteca faker
         factory(\App\User::class, 10)->create();
         */
+       
+        factory(\App\User::class, 10)->create()->each(function($user){
+            $user->store()->save(factory(\App\Store::class)->make());
+        });
+
     }
 }
