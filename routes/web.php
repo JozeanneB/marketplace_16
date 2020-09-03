@@ -147,3 +147,5 @@ Route::get('/model', function () {
 
     return $products;
 });
+
+Route::get('/admin/stores', 'Admin\\StoreController@index');
