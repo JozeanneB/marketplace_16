@@ -17,3 +17,5 @@
         @endforeach
     </tbody>
 </table>
+
+{{$stores->links()}}
