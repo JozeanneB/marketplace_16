@@ -164,5 +164,7 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
         Route::get('/{store}/edit', 'StoreController@edit')->name('edit');
         Route::post('/update/{store}', 'StoreController@update')->name('update');
         Route::get('/destroy/{store}', 'StoreController@destroy')->name('destroy');
-    });    
+    });
+    
+    Route::resource('products', 'ProductController');
 });
