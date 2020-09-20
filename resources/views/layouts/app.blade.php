@@ -36,6 +36,10 @@
                             @csrf
                         </form>
                     </li>
+
+                    <li class="nav-item">
+                        <span class="nav-link">{{auth()->user()->name}}</span>
+                    </li>
                 </ul>
             </div>
             @endauth
