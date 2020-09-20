@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     $helloWorld = 'Hello World';
     return view('welcome', ['hello' => $helloWorld]);
-});
+})->name('home');
 
 Route::get('/model', function () {
     /*
@@ -177,4 +177,4 @@ Route::group(['middleware' => ['auth']], function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
