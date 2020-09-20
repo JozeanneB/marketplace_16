@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome', ['hello' => $helloWorld]);
 });
 
-Route::get('/model', function () {       
+Route::get('/model', function () {
     /*
     $user = new \App\User(); // Active Record - criação de usuário
 
@@ -31,7 +31,7 @@ Route::get('/model', function () {
 
     return \App\User::all();
     */
-    
+
     /*
     $user = \App\User::find(17); // Active Record - busca de usuário
     
@@ -60,7 +60,7 @@ Route::get('/model', function () {
         'name' => 'Atualizando com Mass Update'
     ]);
     */
-    
+
     /*
     //Como eu faria para pegar a loja de um usuário
     $user = \App\User::find(14);
@@ -68,7 +68,7 @@ Route::get('/model', function () {
     //dd($user->store->count()); // Número de propriedades da store
     return $user->store; //O objeto único (Store) se for Collection de Dados (Objeto)
     */
-    
+
     /*
     //Pegar os produtos de uma loja
     $loja = \App\Store::find(1);
@@ -76,7 +76,7 @@ Route::get('/model', function () {
     //return $loja->products()->where('id', 1)->get();
     return $loja->products;
     */
- 
+
     /*
     //Pegar as lojas de uma categoria
     $categoria = \App\Category::find(1);
@@ -143,7 +143,7 @@ Route::get('/model', function () {
 
     return $product->categories;
     */
-    
+
     return \App\User::all();
 
     $products = \App\Product::all(); // select * from products
@@ -157,21 +157,24 @@ Route::get('/admin/stores/create', 'Admin\\StoreController@create');
 Route::post('/admin/stores/store', 'Admin\\StoreController@store');
 */
 
-Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
-    /* // Rotas antes da segunda refatoração
-    Route::prefix('stores')->name('stores.')->group(function(){
-        Route::get('/', 'StoreController@index')->name('index');
-        Route::get('/create', 'StoreController@create')->name('create');
-        Route::post('/store', 'StoreController@store')->name('store');
-        Route::get('/{store}/edit', 'StoreController@edit')->name('edit');
-        Route::post('/update/{store}', 'StoreController@update')->name('update');
-        Route::get('/destroy/{store}', 'StoreController@destroy')->name('destroy');
+Route::group(['middleware' => ['auth']], function () {
+    Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
+        /* // Rotas antes da segunda refatoração
+        Route::prefix('stores')->name('stores.')->group(function(){
+            Route::get('/', 'StoreController@index')->name('index');
+            Route::get('/create', 'StoreController@create')->name('create');
+            Route::post('/store', 'StoreController@store')->name('store');
+            Route::get('/{store}/edit', 'StoreController@edit')->name('edit');
+            Route::post('/update/{store}', 'StoreController@update')->name('update');
+            Route::get('/destroy/{store}', 'StoreController@destroy')->name('destroy');
+        });
+        */
+        Route::resource('stores', 'StoreController');
+    
+        Route::resource('products', 'ProductController');
     });
-    */
-    Route::resource('stores', 'StoreController');
-
-    Route::resource('products', 'ProductController');
 });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
