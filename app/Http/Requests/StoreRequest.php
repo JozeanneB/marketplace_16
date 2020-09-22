@@ -30,4 +30,17 @@ class StoreRequest extends FormRequest
             'mobile_phone' => 'required',
         ];
     }
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'min' => 'Campo deve ter no mínimo :min caracteres',
+            'required' => 'Campo :attribute é obrigatório',
+        ];
+    }
 }
