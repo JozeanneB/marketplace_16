@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Product;
 use App\Category;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     private $product;
-    
+
     public function __construct(Product $product)
     {
         $this->product = $product;
@@ -52,12 +53,31 @@ class ProductController extends Controller
         $data = $request->all();
 
         $store = auth()->user()->store;
-        $product = $store->products()->create($data); 
+        $product = $store->products()->create($data);
 
         $product->categories()->sync($data['categories']);
 
+        if ($request->hasFile('photos')) {
+            $images = $this->imageUpload($request, 'image');
+            // inserção destas imagens/referências na base
+            $product->photos()->createMany($images);
+        }
+
         flash('Produto Criado com Sucesso')->success();
         return redirect(route('admin.products.index'));
+    }
+
+    private function imageUpload(Request $request, $imageColumn)
+    {
+        $images = $request->file('photos');
+
+        $uploadedImages = [];
+
+        foreach ($images as $image) {
+            $uploadedImages[] = [$imageColumn => $image->store('products', 'public')];
+        }
+
+        return $uploadedImages;
     }
 
     /**
