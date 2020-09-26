@@ -32,7 +32,13 @@
             </p>
             
             <label>Foto do Logo</label>
-            <input type="file" name="logo" class="form-control">
+            <input type="file" name="logo" class="form-control @error('logo') is-invalid @enderror">
+
+            @error('logo')
+                <dir class="invalid-feedback">
+                    {{$message}}
+                </dir>
+            @enderror
         </div>
 
         <div class="form-group">
