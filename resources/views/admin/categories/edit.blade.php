@@ -17,11 +17,6 @@
         </div>
         
         <div class="form-group">
-            <label>Slug</label>
-            <input type="text" name="slug" class="form-control" value="{{$category->slug}}">
-        </div>
-        
-        <div class="form-group">
             <button type="submit" class="btn btn-lg btn-success">Atualizar Categoria</button>
         </div>
     </form>
