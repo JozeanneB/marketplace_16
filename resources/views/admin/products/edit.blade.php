@@ -43,7 +43,7 @@
             <label>Fotos do Produto</label>
             <input type="file" name="photos[]" class="form-control @error('photos.*') is-invalid @enderror" multiple>
        
-            @error('photos')
+            @error('photos.*')
                 <dir class="invalid-feedback">
                     {{$message}}
                 </dir>
