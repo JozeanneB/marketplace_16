@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     $helloWorld = 'Hello World';
-    return view('welcome', ['hello' => $helloWorld]);
+    return view('home', ['hello' => $helloWorld]);
 })->name('home');
 
 Route::get('/model', function () {
