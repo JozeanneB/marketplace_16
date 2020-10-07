@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/product/{slug}', 'HomeController@single')->name('product.single');
 
+Route::prefix('cart')->name('cart.')->group(function () {
+    Route::post('add', 'CartController@add')->name('add');
+});
+
 Route::get('/model', function () {
     /*
     $user = new \App\User(); // Active Record - criação de usuário
@@ -168,7 +172,7 @@ Route::group(['middleware' => ['auth']], function () {
         });
         */
         Route::resource('stores', 'StoreController');
-    
+
         Route::resource('products', 'ProductController');
 
         Route::resource('categories', 'CategoryController');
